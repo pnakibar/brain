@@ -1,5 +1,14 @@
 from random import randint
+'''
+TODO:
+	-adcionar gato
+	-ler mapa do arquivo
 
+DONE:
+	-tratar mapa na memória
+	-movimentação do rato
+	-achar rotas para o rato pelo final
+'''
 def novaPosAeatoriaGato(labirinto, tabelaCustos):
 	x = randint(0, len(labirinto[0]))
 	y = randint(0, len(labirinto))
