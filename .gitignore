@@ -1,3 +1,4 @@
 64x64.png
 *.pyc
-*/*.pyc
+.pyc
+pyc
