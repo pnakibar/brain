@@ -1,11 +1,10 @@
-* TODO:
-	-implementar controle do jogo
-	-implementar GUI
-	
+#Como iniciar
+Execute ***main.py*** com o python3
 
-* DONE:
-	- adcionar gato
-	- tratar mapa na memória
-	- movimentação do rato
-	- achar rotas para o rato pelo final
-	- ler mapa do arquivo
+#Controles
+- Espaço para próxima iteração do rato
+- Esc para sair do jogo
+
+#TODO
+- Verificar o resto das especificações
+- Documentar
