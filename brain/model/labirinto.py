@@ -10,12 +10,14 @@ class Labirinto:
 		self.rato = self.inicio
 
 		self.gato = self.gerarGato()
-		
+
 		self.moverCima = lambda x, y: (x, y - 1)
 		self.moverBaixo = lambda x, y: (x, y + 1)
 		self.moverDireita = lambda x, y: (x + 1, y)
 		self.moverEsquerda = lambda x, y: (x - 1, y)
 		self.movimentos = [self.moverCima, self.moverBaixo, self.moverDireita, self.moverEsquerda]
+
+
 
 	def printMatrix(self, m):
 		for e in m:
@@ -34,13 +36,28 @@ class Labirinto:
 	def acharInicio(self): return self.acharChar('S')
 	def acharFim(self):	return self.acharChar('F')
 
+	def moverRato(self, newPos):
+		if newPos == self.gato:
+			raise Exception("Gato no caminho!")
+		else:
+			self.rato = newPos
+
 	def gerarGato(self):
+		'''
+		TODO:
+			Verificar se o gato nao pode aparecer aonde o rato esta
+		'''
 		x = randint(0, len(self.labirinto[0])-1)
 		y = randint(0, len(self.labirinto)-1)
 
-		if self.labirinto[y][x] == '0':
-			self.gerarGato()
 
+		if (x,y) == self.rato or self.labirinto[y][x] == '0':
+			return self.gerarGato()
+		'''
+		while self.labirinto[y][x] == '0' or ((x,y) == self.rato):
+			x = randint(0, len(self.labirinto[0])-1)
+			y = randint(0, len(self.labirinto)-1)
+		'''
 		return x,y
 
 	def possiveisMovimentos(self, pos):
@@ -97,5 +114,5 @@ class Labirinto:
 		return menorRota, menorPesoRota
 
 def labirintoFileFactory(filename):
-	labirinto, tabelaCustos = carregarArquivo("labirinto")
+	labirinto, tabelaCustos = carregarArquivo(filename)
 	return Labirinto(labirinto, tabelaCustos)

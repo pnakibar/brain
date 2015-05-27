@@ -50,7 +50,7 @@ def carregarArquivo(filename):
 			toLoad = tabelaCustos
 
 		elif toLoad != None:
-			toLoad.append(e)		
+			toLoad.append(e)
 
 
 	file.close()
@@ -61,3 +61,5 @@ def carregarArquivo(filename):
 	tabelaCustos = addAround(tabelaCustos)
 
 	return labirinto, tabelaCustos
+
+#print(carregarArquivo("/home/pedronakibar/git/TPA/brain/lab"))
