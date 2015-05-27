@@ -1,13 +1,13 @@
-#from model.Labirinto import Labirinto
-#from model.Labirinto import labirintoFileFactory
-from model.Labirinto import *
+from model.Labirinto import Labirinto
+
+
 
 
 #labirinto, tabelaCustos = carregarArquivo("labirinto")
 #lab = Labirinto(labirinto, tabelaCustos)
 lab = labirintoFileFactory("labirinto")
 rotas = lab.fazRotas(lab.rato)
-
+a = 123
 
 #gato = posAleatoriaGato(labirinto)
 #rato = acharInicio(labirinto)
