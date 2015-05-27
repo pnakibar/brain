@@ -3,20 +3,25 @@ import sys
 from pygame.locals import *
 from control.gameControl import *
 
+
 class Screen:
     def __init__(self, gameController):
+        self.floorTile = pygame.image.load("brain/assets/chao.png")
+        self.gatoTile = pygame.image.load("brain/assets/gato.png")
+        self.ratoTile = pygame.image.load("brain/assets/rato.png")
+        self.backgroundTile = pygame.image.load("brain/assets/wall.png")
+        self.tileSize = 64
+
         self.gameController = gameController
-        self.SCREEN_WIDTH = len(gameController.labirinto.labirinto[0]) * 16
-        self.SCREEN_HEIGHT = len(gameController.labirinto.labirinto) * 16
+        self.SCREEN_WIDTH = len(gameController.labirinto.labirinto[0]) * self.tileSize
+        self.SCREEN_HEIGHT = len(gameController.labirinto.labirinto) * self.tileSize
         self.display = None
         self.__FPS = 60
         self.event = 0
         self.__end = True
         self.bgColor = (10, 166, 201)
-        self.floorTile = pygame.image.load("assets/chao.png")
-        self.gatoTile = pygame.image.load("assets/gato.png")
-        self.ratoTile = pygame.image.load("assets/rato.png")
-        self.tileSize = 16
+
+
 
     def convertXYIntoRelativePosition(self, pos):
         x, y = pos
@@ -32,6 +37,8 @@ class Screen:
             for x in y:
                 if x != '0':
                     self.display.blit(self.floorTile, (posX,posY))
+                else:
+                    self.display.blit(self.backgroundTile, (posX,posY))
                 posX = posX + self.tileSize
             posY = posY + self.tileSize
             posX = 0
@@ -55,12 +62,20 @@ class Screen:
             pygame.display.flip()
             pygame.display.update()
 
+            if self.gameController.acabouJogo:
+                if self.gameController.ratoVivo:
+                    #TODO something nice
+                    pass
+                else:
+                    #TODO something bad
+                    pass
+
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
                     if event.key == K_SPACE:
-                        self.gameController.rodaTurno()
-                        break
-
+                        if not self.gameController.acabouJogo:
+                            self.gameController.rodaTurno()
+                            break
                     elif event.key == K_ESCAPE:
                         pygame.quit()
                         sys.exit()
