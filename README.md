@@ -3,14 +3,20 @@ Instale o python-pygame
 ```bash
 	sudo apt-get install python-pygame
 ```
-Execute ***main.py*** com o python2
+Execute ***main.py*** com o python2:
+Para rodar sem pygame:
 ```bash
-	python main.py
+	python main.py nomeMapa
+```
+Para rodar com pygame:
+```bash
+	python main.py -pygame nomeMapa
 ```
 
+
+
 #Controles
-- Espaço para próxima iteração do rato
-- Esc para sair do jogo
+- Enter para próxima iteração do rato
 
 #TODO
 - Verificar o resto das especificações
