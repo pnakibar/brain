@@ -61,5 +61,3 @@ def carregarArquivo(filename):
 	tabelaCustos = addAround(tabelaCustos)
 
 	return labirinto, tabelaCustos
-
-#print(carregarArquivo("/home/pedronakibar/git/TPA/brain/lab"))

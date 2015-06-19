@@ -1,5 +1,5 @@
 from random import randint
-from loadFile import carregarArquivo
+from loadFile import *
 
 class Labirinto:
 	def __init__(self, lab, tabCustos):

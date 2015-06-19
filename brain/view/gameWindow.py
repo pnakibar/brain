@@ -6,10 +6,10 @@ from control.gameControl import *
 
 class Screen:
     def __init__(self, gameController):
-        self.floorTile = pygame.image.load("brain/assets/chao.png")
-        self.gatoTile = pygame.image.load("brain/assets/gato.png")
-        self.ratoTile = pygame.image.load("brain/assets/rato.png")
-        self.backgroundTile = pygame.image.load("brain/assets/wall.png")
+        self.floorTile = pygame.image.load("assets/chao.png")
+        self.gatoTile = pygame.image.load("assets/gato.png")
+        self.ratoTile = pygame.image.load("assets/rato.png")
+        self.backgroundTile = pygame.image.load("assets/wall.png")
         self.tileSize = 64
 
         self.gameController = gameController
