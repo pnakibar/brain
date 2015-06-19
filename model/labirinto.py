@@ -51,7 +51,7 @@ class Labirinto:
 		y = randint(0, len(self.labirinto)-1)
 
 
-		if (x,y) == self.rato or self.labirinto[y][x] == '0':
+		if self.labirinto[y][x] == '0':
 			return self.gerarGato()
 		'''
 		while self.labirinto[y][x] == '0' or ((x,y) == self.rato):

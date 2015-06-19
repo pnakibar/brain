@@ -2,6 +2,10 @@ from model.labirinto import *
 
 class GameControl:
 	def __init__(self, filename):
+                '''
+                filename: diretorio do labirintio
+                '''
+
 		self.labirinto = labirintoFileFactory(filename)
 		self.ratoVivo = True
 		self.acabouJogo = False
@@ -30,7 +34,7 @@ class GameControl:
 			self.labirinto.gato = self.labirinto.gerarGato()
 		except:
 			self.ratoVivo = False
-			self.acabouJogo = False
+			self.acabouJogo = True 
 			print('perdeu! :/')
 
 		if self.labirinto.rato == self.labirinto.fim:

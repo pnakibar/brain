@@ -1,5 +1,12 @@
 #Como iniciar
-Execute ***main.py*** com o python3
+Instale o python-pygame
+```bash
+	sudo apt-get install python-pygame
+```
+Execute ***main.py*** com o python2
+```bash
+	python main.py
+```
 
 #Controles
 - Espaço para próxima iteração do rato
