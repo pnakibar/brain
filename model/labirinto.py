@@ -19,10 +19,6 @@ class Labirinto:
 
 
 
-	def printMatrix(self, m):
-		for e in m:
-			print(e)
-
 	def printLabirinto(self): printMatrix(self.labirinto)
 	def printTabelaCustos(self): printMatrix(self.tabelaCustos)
 
@@ -34,13 +30,10 @@ class Labirinto:
 					return x, y
 
 	def acharInicio(self): return self.acharChar('S')
-	def acharFim(self):	return self.acharChar('F')
+        def acharFim(self): return self.acharChar('F')
 
 	def moverRato(self, newPos):
-		if newPos == self.gato:
-			raise Exception("Gato no caminho!")
-		else:
-			self.rato = newPos
+		self.rato = newPos
 
 	def gerarGato(self):
 		'''

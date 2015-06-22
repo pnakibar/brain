@@ -49,33 +49,51 @@ class Screen:
         self.display.blit(self.gatoTile, (gatoX,gatoY))
         self.display.blit(self.ratoTile, (ratoX,ratoY))
 
+    def eventHandler(self):
+        def quit():
+            pygame.quit()
+            sys.exit()
+        
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_RETURN:
+                    if not self.gameController.acabouJogo:
+                        self.gameController.rodaTurno()
+                        break
+                    else:
+                        quit()
 
-    def run(self):
+                elif event.key == K_ESCAPE:
+                    quit()
+
+    def create_text(self, text, color):
+        image = self.font.render(text, True, color)
+        return image
+
+    def initDisplay(self):
         pygame.init()
+        self.font = pygame.font.Font(None, 72)
         self.display = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT), 0, 32)
 
+    def updateDisplay(self):
+        self.display.fill(self.bgColor)
+        self.drawLabirinto()
+        self.drawActors()
+
+        if self.gameController.acabouJogo:
+            if self.gameController.ratoVivo:
+                text = self.create_text("Voce ganhou!", (0, 128, 0))        
+                self.display.blit(text, (0,0))
+            else:
+                text = self.create_text("Voce perdeu!", (128, 0, 0))        
+                self.display.blit(text, (0,0))
+                pass
+
+        pygame.display.flip()
+        pygame.display.update()
+
+    def run(self):
+        self.initDisplay()
         while(True):
-
-            self.display.fill(self.bgColor)
-            self.drawLabirinto()
-            self.drawActors()
-            pygame.display.flip()
-            pygame.display.update()
-
-            if self.gameController.acabouJogo:
-                if self.gameController.ratoVivo:
-                    #TODO something nice
-                    pass
-                else:
-                    #TODO something bad
-                    pass
-
-            for event in pygame.event.get():
-                if event.type == KEYDOWN:
-                    if event.key == K_SPACE:
-                        if not self.gameController.acabouJogo:
-                            self.gameController.rodaTurno()
-                            break
-                    elif event.key == K_ESCAPE:
-                        pygame.quit()
-                        sys.exit()
+            self.eventHandler()
+            self.updateDisplay()

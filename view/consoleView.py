@@ -42,10 +42,10 @@ class Screen:
                 buffer = ""
                 for x in range(len(lab[y])):
                     tile = lab[y][x]
-                    if (x, y) == self.getRatoPos():
-                        buffer+=self.mouse
-                    elif (x, y) == self.getGatoPos():
+                    if (x, y) == self.getGatoPos():
                         buffer+=self.cat
+                    elif (x, y) == self.getRatoPos():
+                        buffer+=self.mouse
                     elif tile == '0':
                         buffer+=self.background
                     else:

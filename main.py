@@ -3,7 +3,7 @@ from control.gameControl import *
 import sys
 
 if sys.argv[1] == '-pygame':
-    from view.gameWindow import *
+    from view.gameView import *
 else:
     from view.consoleView import *
 '''
