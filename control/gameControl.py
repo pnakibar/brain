@@ -10,22 +10,33 @@ class GameControl:
 		self.ratoVivo = True
 		self.acabouJogo = False
 
+        def perdeuJogo(self):
+            self.ratoVivo = False
+            self.acabouJogo = True 
+
+        def ganhouJogo(self):
+            self.acabouJogo = True
 
 	def rodaTurno(self):
             if not self.acabouJogo:
 		#calcular a rota e achar a menor
-		rota, peso = self.labirinto.acharMenorRota(self.labirinto.rato)
+                try:
+		    rota, peso = self.labirinto.acharMenorRota(self.labirinto.rato)
+
+                except Exception:
+                    self.perdeuJogo()
+                    raise
+                    
 
 		#utiliza rota[1] pois rota[0] e a posicao atual do rato
                 self.labirinto.gato = self.labirinto.gerarGato()
                 self.labirinto.moverRato(rota[-2]) #rota[-2] pega o penultimo termo da pilha de rota
                 
                 if self.labirinto.gato == self.labirinto.rato:
-			self.ratoVivo = False
-			self.acabouJogo = True 
+		    self.perdeuJogo()
 
 		if self.labirinto.rato == self.labirinto.fim:
-			self.acabouJogo = True
+                    self.ganhouJogo()
 
 	def getGatoPos(self):
 		return self.labirinto.gato

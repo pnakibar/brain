@@ -14,7 +14,6 @@ def printSplash():
     print(bcolors.BOLD + bcolors.FAIL + splash + bcolors.ENDC )
 
 
-
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -57,6 +56,7 @@ class Screen:
         def run(self):
             printSplash()
             raw_input("Pressione enter para continuar...")
+            error = False
 
             while (True):
                 clearScreen()
@@ -66,14 +66,20 @@ class Screen:
                         print(bcolors.BOLD + bcolors.OKGREEN + "Voce ganhou!" + bcolors.ENDC)
                     
                     else:
+                        if error:
+                            print(bcolors.BOLD + bcolors.WARNING + "Nao tem rota ate o final!" + bcolors.ENDC)
+
                         print(bcolors.BOLD + bcolors.FAIL + "Voce perdeu!" + bcolors.ENDC)
+                        
 
                     raw_input("Presione enter para terminar...")
                     break
                 else:
                     raw_input("Pressione enter para continuar...")
-                    self.gameController.rodaTurno()
-
+                    try:
+                        self.gameController.rodaTurno()
+                    except Exception:
+                        error = True
 
         def getGatoPos(self):
             gatoX, gatoY = self.gameController.getGatoPos()

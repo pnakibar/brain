@@ -94,6 +94,9 @@ class Labirinto:
 	def acharMenorRota(self, pos):
 		rotasPossiveis = self.fazRotas(pos)
 
+                if len(rotasPossiveis) == 0:
+                    raise Exception('Nao tem rotas!')
+
 		menorRota = rotasPossiveis[0]
 		menorPesoRota = self.calcularCustoRota(menorRota)
 

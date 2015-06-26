@@ -58,7 +58,10 @@ class Screen:
             if event.type == KEYDOWN:
                 if event.key == K_RETURN:
                     if not self.gameController.acabouJogo:
-                        self.gameController.rodaTurno()
+                        try:
+                            self.gameController.rodaTurno()
+                        except Exception:
+                            self.error = True
                         break
                     else:
                         quit()
@@ -72,7 +75,8 @@ class Screen:
 
     def initDisplay(self):
         pygame.init()
-        self.font = pygame.font.Font(None, 72)
+        self.fontSize = 32 
+        self.font = pygame.font.Font(None, self.fontSize)
         self.display = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT), 0, 32)
 
     def updateDisplay(self):
@@ -85,7 +89,10 @@ class Screen:
                 text = self.create_text("Voce ganhou!", (0, 128, 0))        
                 self.display.blit(text, (0,0))
             else:
-                text = self.create_text("Voce perdeu!", (128, 0, 0))        
+                if self.error:
+                    text = self.create_text("Nao da pra chegar no final!", (128, 0, 0))        
+                else:
+                    text = self.create_text("Voce perdeu!", (128, 0, 0))        
                 self.display.blit(text, (0,0))
                 pass
 
@@ -93,6 +100,7 @@ class Screen:
         pygame.display.update()
 
     def run(self):
+        self.error = False
         self.initDisplay()
         while(True):
             self.eventHandler()
