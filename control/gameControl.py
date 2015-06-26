@@ -10,6 +10,11 @@ class GameControl:
 		self.ratoVivo = True
 		self.acabouJogo = False
 
+                if (self.checkPerdeuJogo()):
+                    self.perdeuJogo()
+
+        
+
         def perdeuJogo(self):
             self.ratoVivo = False
             self.acabouJogo = True 
@@ -37,7 +42,8 @@ class GameControl:
 
 		if self.labirinto.rato == self.labirinto.fim:
                     self.ganhouJogo()
-
+        def checkPerdeuJogo(self):
+            return (self.getGatoPos()==self.getRatoPos())
 	def getGatoPos(self):
 		return self.labirinto.gato
 	def getRatoPos(self):
