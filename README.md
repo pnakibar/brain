@@ -19,7 +19,14 @@ No Linux:
 ##Rodando com o pygame
 Instale o python-pygame
 ```bash
+	#no ubuntu
 	sudo apt-get install python-pygame
+
+	#nas versões anteriores a 22 do fedora
+	sudo yum install pygame
+
+	#ou no fedora 22
+	sudo dnf install pygame
 ```
 Execute ***main.py*** com o python2:
 ```bash
