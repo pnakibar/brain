@@ -20,8 +20,9 @@ class Screen:
         self.event = 0
         self.__end = True
         self.bgColor = (10, 166, 201)
-
-
+	self.routeTile = colorize(self.floorTile, (0 , 0, 255))
+	self.endTile = colorize(self.floorTile, (255 , 0, 0))
+	self.startTile = colorize(self.floorTile, (0 , 255, 0))
 
     def convertXYIntoRelativePosition(self, pos):
         x, y = pos
@@ -36,9 +37,17 @@ class Screen:
         for y in self.gameController.getLabirinto():
             for x in y:
                 if x != '0':
-                    self.display.blit(self.floorTile, (posX,posY))
+			if x == 'F':
+				self.display.blit(self.endTile, (posX, posY))
+			elif (posX/self.tileSize, posY/self.tileSize) in  self.gameController.rota: #HACK
+				self.display.blit(self.routeTile, (posX, posY))
+			elif x == 'S':
+				self.display.blit(self.startTile, (posX, posY))
+			
+			else:
+				self.display.blit(self.floorTile, (posX,posY))
                 else:
-                    self.display.blit(self.backgroundTile, (posX,posY))
+			self.display.blit(self.backgroundTile, (posX,posY))
                 posX = posX + self.tileSize
             posY = posY + self.tileSize
             posX = 0
@@ -105,3 +114,20 @@ class Screen:
         while(True):
             self.eventHandler()
             self.updateDisplay()
+
+def colorize(image, newColor):
+    """
+    Create a "colorized" copy of a surface (replaces RGB values with the given color, preserving the per-pixel alphas of
+    original).
+    :param image: Surface to create a colorized copy of
+    :param newColor: RGB color to use (original alpha values are preserved)
+    :return: New colorized Surface instance
+    """
+    image = image.copy()
+
+    # zero out RGB values
+    # image.fill((0, 0, 0, 255), None, pygame.BLEND_RGBA_MULT)
+    # add in new RGB values
+    image.fill(newColor[0:3] + (0,), None, pygame.BLEND_RGBA_ADD)
+
+    return image

@@ -9,6 +9,7 @@ class GameControl:
 		self.labirinto = labirintoFileFactory(filename)
 		self.ratoVivo = True
 		self.acabouJogo = False
+		self.rota = []
 
                 if (self.checkPerdeuJogo()):
                     self.perdeuJogo()
@@ -36,12 +37,14 @@ class GameControl:
 		#utiliza rota[1] pois rota[0] e a posicao atual do rato
                 self.labirinto.gato = self.labirinto.gerarGato()
                 self.labirinto.moverRato(rota[-2]) #rota[-2] pega o penultimo termo da pilha de rota
+		self.rota.append(rota[-2])
                 
                 if self.labirinto.gato == self.labirinto.rato:
 		    self.perdeuJogo()
 
 		if self.labirinto.rato == self.labirinto.fim:
                     self.ganhouJogo()
+
         def checkPerdeuJogo(self):
             return (self.getGatoPos()==self.getRatoPos())
 	def getGatoPos(self):
