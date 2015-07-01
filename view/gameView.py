@@ -24,6 +24,13 @@ class Screen:
 	self.endTile = colorize(self.floorTile, (255 , 0, 0))
 	self.startTile = colorize(self.floorTile, (0 , 255, 0))
 
+	#favicon
+	pygame.display.set_icon(self.ratoTile)
+
+	#window name
+	pygame.display.set_caption("BRAIN")
+
+
     def convertXYIntoRelativePosition(self, pos):
         x, y = pos
         newX = x*self.tileSize
