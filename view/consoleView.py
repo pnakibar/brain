@@ -48,8 +48,18 @@ class Screen:
                     elif tile == '0':
                         buffer+=self.background
                     else:
-                        buffer+=self.floor
+			if tile == 'S' or tile == 'F':
+				buffer+=bcolors.WARNING
+                        	buffer+=tile
+				buffer+=bcolors.ENDC
 
+			elif (x, y) in self.gameController.rota:
+				buffer+=bcolors.WARNING
+                        	buffer+='`'
+				buffer+=bcolors.ENDC
+			else:
+                        	buffer+=self.floor
+			
                 print(buffer)
 
         
