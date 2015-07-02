@@ -35,7 +35,6 @@ class GameControl:
                     self.perdeuJogo()
                     raise
 
-	    	print(rota)
                     
 		#utiliza rota[1] pois rota[0] e a posicao atual do rato
                 self.labirinto.gato = self.labirinto.gerarGato()
