@@ -53,6 +53,11 @@ class Screen:
                         	buffer+=tile
 				buffer+=bcolors.ENDC
 
+			elif (x, y) in self.gameController.rotaAtual:
+				buffer+=bcolors.OKBLUE
+				buffer+='*'
+				buffer+=bcolors.ENDC
+
 			elif (x, y) in self.gameController.rota:
 				buffer+=bcolors.WARNING
                         	buffer+='`'
