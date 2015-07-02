@@ -10,6 +10,7 @@ class GameControl:
 		self.ratoVivo = True
 		self.acabouJogo = False
 		self.rota = []
+		self.rotaAtual = []
 
                 if (self.checkPerdeuJogo()):
                     self.perdeuJogo()
@@ -27,13 +28,15 @@ class GameControl:
             if not self.acabouJogo:
 		#calcular a rota e achar a menor
                 try:
-		    rota, peso = self.labirinto.acharMenorRota(self.labirinto.rato)
+			rota, peso = self.labirinto.acharMenorRota(self.labirinto.rato)
+			self.rotaAtual = rota[:-2]
 
                 except Exception:
                     self.perdeuJogo()
                     raise
-                    
 
+	    	print(rota)
+                    
 		#utiliza rota[1] pois rota[0] e a posicao atual do rato
                 self.labirinto.gato = self.labirinto.gerarGato()
                 self.labirinto.moverRato(rota[-2]) #rota[-2] pega o penultimo termo da pilha de rota

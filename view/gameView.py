@@ -20,9 +20,10 @@ class Screen:
         self.event = 0
         self.__end = True
         self.bgColor = (10, 166, 201)
-	self.routeTile = colorize(self.floorTile, (0 , 0, 255))
-	self.endTile = colorize(self.floorTile, (255 , 0, 0))
-	self.startTile = colorize(self.floorTile, (0 , 255, 0))
+	self.routeTile = colorize(self.floorTile, (0, 0, 237))
+	self.endTile = colorize(self.floorTile, (237, 0, 0))
+	self.startTile = colorize(self.floorTile, (0, 237, 0))
+	self.futureRouteTile = colorize(self.floorTile, (100,100,100))
 
 	#favicon
 	pygame.display.set_icon(self.ratoTile)
@@ -46,6 +47,8 @@ class Screen:
                 if x != '0':
 			if x == 'F':
 				self.display.blit(self.endTile, (posX, posY))
+			elif (posX/self.tileSize, posY/self.tileSize) in self.gameController.rotaAtual:
+				self.display.blit(self.futureRouteTile, (posX, posY))
 			elif (posX/self.tileSize, posY/self.tileSize) in  self.gameController.rota: #HACK
 				self.display.blit(self.routeTile, (posX, posY))
 			elif x == 'S':
