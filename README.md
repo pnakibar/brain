@@ -1,5 +1,5 @@
 #Como iniciar
-##Instalando
+##Download
 * Você pode utilizar o git clone
 ```bash
 	git clone http://www.github.com/pnakibar/brain.git
