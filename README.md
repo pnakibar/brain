@@ -1,5 +1,5 @@
-#Como iniciar
-##Download
+# Como iniciar
+## Download
 * Você pode utilizar o git clone
 ```bash
 	git clone http://www.github.com/pnakibar/brain.git
@@ -9,14 +9,14 @@
 https://github.com/pnakibar/brain/archive/master.zip
 
 
-##Rodando no terminal
+## Rodando no terminal
 No Linux:
 ```bash
 	python main.py nomeMapa
 ```
 *Embora eu só tenha rodado no Ubuntu 14.04, 14.10 e 15.04, creio que rode em todos*
 
-##Rodando com o pygame
+## Rodando com o pygame
 Instale o python-pygame
 ```bash
 	#no ubuntu
@@ -33,5 +33,5 @@ Execute ***main.py*** com o python2:
 	python main.py -pygame nomeMapa
 ```
 
-#Controles
+# Controles
 - Enter para o próximo movimento do rato
